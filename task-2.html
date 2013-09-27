@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<title>Task-2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		Object.prototype.foo = "bar";
+
+		function Universe(data) {
+			this.currentGalaxy = 0;
+			this.data;
+
+			this.init = function(data) {
+				if (data === undefined) {
+					this.setTestData();
+				} else {
+					this.data = data;
+				}
+			}
+
+			this.setTestData = function() {
+				this.data = {
+					"galaxy": [{
+						"name": "The Milky Way",
+						"systems": [{
+							"name": "The solar system",
+							"planets": [{
+								"name": "Mercury"
+								}, {
+									"name": "Venus"
+								}, {
+									"name": "Mars"
+								}, {
+									"name": "Earth",
+									"continents": [{
+											"name": "Eurasia",
+											"country": [{
+												"name": "The Russian Federation"
+												}, {
+													"name": "Finland"
+												}
+											]
+										}, {
+											"name": "Australia",
+										}, {
+											"name": "Africa",
+										}
+									]
+								}
+							]
+						}]
+					}]
+				};	
+			}
+
+			this.setNameForCurrentGalaxy = function(name) {
+				this.data["galaxy"][this.currentGalaxy]["name"] = name;
+			}
+
+			this.getNameForCurrentGalaxy = function() {
+				return this.data["galaxy"][this.currentGalaxy]["name"];
+			}
+
+			this.dataEquals = function(obj) {
+				var result = false;
+				if (this.data["galaxy"][this.currentGalaxy]["name"] === obj.data["galaxy"][this.currentGalaxy]["name"]) {
+					result = true;
+				} else {
+					result = false;
+				}
+
+				return result;
+			}
+
+			this.init(data);
+		}
+
+		function clone(obj) {
+			if(obj == null || typeof(obj) != 'object') {
+				return obj;
+			}
+
+			var temp = new obj.constructor(); 
+			for(var key in obj) {
+				temp[key] = clone(obj[key]);
+			}
+			return temp;
+		};
+
+		function assertEqualsUniverse(universe, newUniverse, message) {
+			message = "Objects not equels!!";
+			console.assert(universe.dataEquals(newUniverse), message);
+		}
+
+		function assertNotEqualsUniverse(universe, newUniverse, message) {
+			message = "Objects equels!";
+			console.assert(universe.dataEquals(newUniverse) == false, message);
+		}
+
+		function createTestEnvironment() {
+			this.universe = new Universe();
+			var newData = clone(universe.data);
+			this.newUniverse = new Universe(newData);
+
+			console.log(this.universe.data);
+			console.log(this.newUniverse.data);
+		}
+
+		function testUniverse(universe, newUniverse) {
+			assertEqualsUniverse(universe, newUniverse);
+
+			var newSystemName = "New system name";
+			universe.setNameForCurrentGalaxy(newSystemName);
+
+			assertNotEqualsUniverse(universe, newUniverse);
+		}
+
+		this.universe = null;
+		this.newUniverse = null;
+		createTestEnvironment();
+		testUniverse(this.universe, this.newUniverse);
+		createTestEnvironment();
+		testUniverse(this.newUniverse, this.universe);
+	</script>
+</body>
+</html>
