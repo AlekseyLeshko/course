@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		#someId {
+			color: #FF0000;
+			border: 1px dotted red;
+			width: 80%; 
+		    background: #ccc;
+		    padding: 5px;
+		    padding-right: 20px; 
+		    float: right;
+		}
+	</style>
+
+<body>
+
+    <div id="someId">
+        Some text content
+    </div>
+    <script>
+    	function applyCss(divId, options) {
+    		var div = document.getElementById(divId);
+
+    		var strStyle = ""
+    		for (var key in options) {
+    			strStyle += key + ": " + options[key] + ";";
+    		}
+
+			var attr = "style";
+			div.setAttribute(attr, strStyle);
+    	}
+
+
+    	function createNewDiv(divId) {
+	        var someDiv = document.getElementById("someId");
+	        var newDiv = document.createElement("div");
+	        newDiv.setAttribute("id", divId);
+	        newDiv.innerHTML = "... и ещё кое-что";
+
+	        someDiv.appendChild(newDiv);	
+    	}
+
+    	var divId = "newDiv";
+    	createNewDiv(divId);
+
+    	var options = { "font-weight": "bold", "color": "#0A00FF" };
+    	applyCss(divId, options);
+    </script>
+</body>
+
+</html>
