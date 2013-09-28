@@ -1,0 +1,17 @@
+.cloneable {
+    float: left;
+    border: solid 1px #ccc;
+    padding: 5px;
+}
+
+#elementToClone {
+	color: red;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
