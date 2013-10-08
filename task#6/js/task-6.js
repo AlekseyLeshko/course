@@ -1,5 +1,7 @@
-function Wobbler(element) {
+function Wobbler(element, min, max) {
     this.element = element;
+    this.min = min;
+    this.max = max;
     this.property = "transform";
     this.angle = 0;
     this.timeout = 16;
@@ -9,8 +11,7 @@ function Wobbler(element) {
 }
 
 Wobbler.prototype.calculateAngle = function() {
-    var newAngle = Math.sin(Math.random() * 25);
-    this.angle += newAngle;
+    this.angle = Math.random() * (this.max - this.min) + this.min;
 }
 
 Wobbler.prototype.getProperty = function() {
@@ -35,5 +36,5 @@ Wobbler.prototype.rotate = function() {
 var elementIds = ['rectangle', 'circle', 'triangle'];
 for (var id in elementIds) {
     var domElement = document.getElementById(elementIds[id]);
-    new Wobbler(domElement);
+    new Wobbler(domElement, -10, 25);
 }
