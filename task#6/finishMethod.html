@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+    function Person(first, last, born) {
+        this.firstName   = first;
+        this.lastName    = last;
+        this.yearOfBirth = born;
+    }
+
+    Person.prototype.computeAge = function(currentYear) {
+        return currentYear - this.yearOfBirth;
+    }
+    Person.prototype.setLastName = function(newLastName) {
+        this.lastName = newLastName;
+    }
+
+    // var anne = new Person({ firstName: "Anne",
+    //                         lastName: "Wojcicki",
+    //                         yearOfBirth: 1973 });
+    // var sergey = new Person({ firstName: "Sergey",
+    //                           lastName: "Brin",
+    //                           yearOfBirth: 1973 });
+    // console.log(anne);
+    // console.log(sergey);
+
+    var startDate = Date.now();
+
+    var maxCount = 99999;
+    for (var i = 0; i < maxCount; i++) {
+        new Person("Anne", "Hathaway", 1982);
+    }
+
+    var endDate = Date.now();
+    var workTime = endDate - startDate;
+    console.log("Work time: " + startDate + " - " + endDate + ": " + workTime);
+    </script>
+</body>
+</html>
