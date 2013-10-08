@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+    .rectangle {
+        margin: 50px;
+        padding: 5px;
+        width: 150px;
+        border: solid 1px #800;
+        background-color: #fcc;
+        height: 100px;
+    }
+
+    .circle {
+        margin: 50px;
+        -webkit-border-radius: 999px;
+        -moz-border-radius: 999px;
+        border-radius: 999px;
+        behavior: url(PIE.htc);
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        border: 3px solid red
+    }
+
+    .triangle {
+        margin: 50px;
+        width: 0;
+        height: 0;
+        border-top: 60px solid transparent;
+        border-bottom: 60px solid transparent;
+        border-left: 60px solid green;
+    }
+
+    .non-selectable {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .rotating {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+
+    body {
+        font-family: 'Helvetica', sans-serif;
+        font-size: 12pt;
+        background-color: #eee;
+    }
+
+    article {
+        border-radius: 10px;
+        background-color: white;
+        width: 600px;
+        padding: 10px;
+    }
+
+    .centered {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+</head>
+<body>
+    <article class="centered">
+        <div id="rectangle" class="rotating non-selectable clickable centered rectangle">
+        </div>
+
+        <div id="circle" class="rotating non-selectable clickable centered circle">
+        </div>
+
+        <div id="triangle" class="rotating non-selectable clickable centered triangle">
+        </div>
+    </article>
+    <script type="text/JavaScript" src="js/task-6.js"></script>
+</body>
+</html>
